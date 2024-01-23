@@ -1,0 +1,304 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "annotations": [
+      {
+        "name": "__PBI_TimeIntelligenceEnabled",
+        "value": "0"
+      },
+      {
+        "name": "PBIDesktopVersion",
+        "value": "2.124.1554.0 (23.12)"
+      },
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"fStateStatistics\",\"dStates\"]"
+      },
+      {
+        "name": "PBI_ProTooling",
+        "value": "[\"DevMode\"]"
+      }
+    ],
+    "culture": "en-US",
+    "cultures": [
+      {
+        "name": "en-US",
+        "linguisticMetadata": {
+          "content": {
+            "DynamicImprovement": "HighConfidence",
+            "Language": "en-US",
+            "Version": "1.0.0"
+          },
+          "contentType": "json"
+        }
+      }
+    ],
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "relationships": [
+      {
+        "name": "f457a2cf-6a12-47fd-82fd-ff775887f2cf",
+        "fromColumn": "State or territory",
+        "fromTable": "fStateStatistics",
+        "toColumn": "State Name, Long",
+        "toTable": "dStates"
+      }
+    ],
+    "sourceQueryCulture": "en-US",
+    "tables": [
+      {
+        "name": "fStateStatistics",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "State or territory",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "dd94aa9e-088a-4228-9672-c959aa4e5989",
+            "sourceColumn": "State or territory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Attribute",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "4cfc60d1-ab98-488b-ba5f-ce21d20d32dd",
+            "sourceColumn": "Attribute",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Value",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              },
+              {
+                "name": "PBI_FormatHint",
+                "value": "{\"isGeneralNumber\":true}"
+              }
+            ],
+            "dataType": "double",
+            "lineageTag": "cb828e0f-6818-4a46-a386-641d5d29c477",
+            "sourceColumn": "Value",
+            "summarizeBy": "sum"
+          }
+        ],
+        "lineageTag": "d8a6e5ec-cb90-40e9-bd74-536128bd43da",
+        "measures": [
+          {
+            "name": "Sum of Attribute",
+            "expression": "SUM ( fStateStatistics[Value] )",
+            "formatString": "#,0",
+            "lineageTag": "51fa01d9-5743-48c1-86ee-97acadae5d51"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fStateStatistics",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Web.BrowserContents(\"https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_population\"),",
+                "    #\"Extracted Table From Html\" = Html.Table(Source, {{\"Column1\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11)\"}, {\"Column2\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(6), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10)\"}, {\"Column3\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(5), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9)\"}, {\"Column4\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(4), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8)\"}, {\"Column5\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(3), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7)\"}, {\"Column6\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(4):nth-last-child(5), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(2), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6)\"}, {\"Column7\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(4):nth-last-child(5), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(2) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(1), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5)\"}, {\"Column8\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(4):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(5):nth-last-child(4), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4)\"}, {\"Column9\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(4):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(5):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(6):nth-last-child(3), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(3), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(3)\"}, {\"Column10\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(4):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(5):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(6):nth-last-child(3) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(7):nth-last-child(2), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(10):nth-last-child(2), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(10):nth-last-child(2)\"}, {\"Column11\", \"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(1):nth-last-child(8) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(7) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(4):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(5):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(6):nth-last-child(3) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(7):nth-last-child(2) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(8):nth-last-child(1), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TH:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(10):nth-last-child(2) + TH:not([colspan]):not([rowspan]):nth-child(11):nth-last-child(1), TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR > TD:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(11) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(10) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(10):nth-last-child(2) + TD:not([colspan]):not([rowspan]):nth-child(11):nth-last-child(1)\"}}, [RowSelector=\"TABLE.sortable.wikitable.sticky-header.static-row-numbers.col1left.col6center > * > TR\"]),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Extracted Table From Html\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Census population[8][a]\", Int64.Type}}),",
+                "    #\"Removed Errors\" = Table.RemoveRowsWithErrors(#\"Changed Type\", {\"Census population[8][a]\"}),",
+                "    #\"Filtered Rows\" = Table.SelectRows(#\"Removed Errors\", each [#\"Census population[8][a]\"] <> null and [#\"Census population[8][a]\"] <> \"\"),",
+                "    #\"Removed Bottom Rows\" = Table.RemoveLastN(#\"Filtered Rows\",3),",
+                "    #\"Unpivoted Other Columns\" = Table.UnpivotOtherColumns(#\"Removed Bottom Rows\", {\"State or territory\"}, \"Attribute\", \"Value\"),",
+                "    #\"Changed Type1\" = Table.TransformColumnTypes(#\"Unpivoted Other Columns\",{{\"Value\", type number}}),",
+                "    #\"Removed Errors1\" = Table.RemoveRowsWithErrors(#\"Changed Type1\", {\"Value\"})",
+                "in",
+                "    #\"Removed Errors1\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      },
+      {
+        "name": "dStates",
+        "annotations": [
+          {
+            "name": "PBI_NavigationStepName",
+            "value": "Navigation"
+          },
+          {
+            "name": "PBI_ResultType",
+            "value": "Table"
+          }
+        ],
+        "columns": [
+          {
+            "name": "State Name, Long",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "51dade8a-7093-4bbc-a079-ceb310ae91a7",
+            "sourceColumn": "State Name, Long",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "State Name, Short",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ae4532b4-cf83-4b2b-9beb-e8549b87dd85",
+            "sourceColumn": "State Name, Short",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cities, Capital",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "05be5f37-23b8-4ee6-b7de-82f696f41ad6",
+            "sourceColumn": "Cities, Capital",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Cities, Largest[12]",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "ad9b6faa-9e21-4652-a907-0bf9ba7d54e8",
+            "sourceColumn": "Cities, Largest[12]",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Ratification oradmission[A], ",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "string",
+            "lineageTag": "1b24d9ac-5250-41a2-9873-31fdee6066ea",
+            "sourceColumn": "Ratification oradmission[A], ",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Population(2020)[10], ",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "e3ebcedd-6ce9-48da-a430-ea21f2b5c89b",
+            "sourceColumn": "Population(2020)[10], ",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Total area[11], mi2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "c1a2ce61-0953-40fd-ae8d-85879d6fa817",
+            "sourceColumn": "Total area[11], mi2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Total area[11], km2",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "1291e591-a68b-479d-9b3d-8c3b870d5003",
+            "sourceColumn": "Total area[11], km2",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "Reps., ",
+            "annotations": [
+              {
+                "name": "SummarizationSetBy",
+                "value": "Automatic"
+              }
+            ],
+            "dataType": "int64",
+            "formatString": "0",
+            "lineageTag": "0ad5a7bd-221b-4fa3-8d5c-a0ded403fbd5",
+            "sourceColumn": "Reps., ",
+            "summarizeBy": "none"
+          }
+        ],
+        "lineageTag": "cbbe79ab-046a-490e-a0b8-a347a862e799",
+        "partitions": [
+          {
+            "name": "dStates",
+            "mode": "import",
+            "source": {
+              "expression": [
+                "let",
+                "    Source = Web.BrowserContents(\"https://en.wikipedia.org/wiki/List_of_states_and_territories_of_the_United_States\"),",
+                "    #\"Extracted Table From Html\" = Html.Table(Source, {{\"Column1\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8)\"}, {\"Column2\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7)\"}, {\"Column3\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(5), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6)\"}, {\"Column4\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(4), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(6), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6)\"}, {\"Column5\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(3):nth-last-child(4), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(5), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(5)\"}, {\"Column6\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(3):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(4):nth-last-child(3), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(4), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(4)\"}, {\"Column7\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(3):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(4):nth-last-child(3) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(5):nth-last-child(2), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(3), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(3), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(3)\"}, {\"Column8\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(3):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(4):nth-last-child(3) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(5):nth-last-child(2), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(2), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(2), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(2)\"}, {\"Column9\", \"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH[colspan=\"\"2\"\"][rowspan=\"\"2\"\"]:nth-child(1):nth-last-child(6) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(2):nth-last-child(5) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(3):nth-last-child(4) + TH[rowspan=\"\"2\"\"]:not([colspan]):nth-child(4):nth-last-child(3) + TH[colspan=\"\"2\"\"]:not([rowspan]):nth-child(5):nth-last-child(2) + TH:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(1), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(5) + TH:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(4) + TH:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(3) + TH:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(2) + TH:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(1), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(9) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(3):nth-last-child(7) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(2) + TD:not([colspan]):not([rowspan]):nth-child(9):nth-last-child(1), TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR > TH:not([colspan]):not([rowspan]):nth-child(1):nth-last-child(8) + TD:not([colspan]):not([rowspan]):nth-child(2):nth-last-child(7) + TD[colspan=\"\"2\"\"]:not([rowspan]):nth-child(3):nth-last-child(6) + TD:not([colspan]):not([rowspan]):nth-child(4):nth-last-child(5) + TD:not([colspan]):not([rowspan]):nth-child(5):nth-last-child(4) + TD:not([colspan]):not([rowspan]):nth-child(6):nth-last-child(3) + TD:not([colspan]):not([rowspan]):nth-child(7):nth-last-child(2) + TD:not([colspan]):not([rowspan]):nth-child(8):nth-last-child(1)\"}}, [RowSelector=\"TABLE.wikitable.sortable.plainrowheaders:nth-child(16) > * > TR\"]),",
+                "    #\"Transposed Table\" = Table.Transpose(#\"Extracted Table From Html\"),",
+                "    #\"Merged Columns\" = Table.CombineColumns(#\"Transposed Table\",{\"Column1\", \"Column2\"},Combiner.CombineTextByDelimiter(\", \", QuoteStyle.None),\"Attribute\"),",
+                "    #\"Transposed Table1\" = Table.Transpose(#\"Merged Columns\"),",
+                "    #\"Promoted Headers\" = Table.PromoteHeaders(#\"Transposed Table1\", [PromoteAllScalars=true]),",
+                "    #\"Changed Type\" = Table.TransformColumnTypes(#\"Promoted Headers\",{{\"Flag, name andpostal abbreviation[8], \", type text}, {\"Flag, name andpostal abbreviation[8], _1\", type text}, {\"Cities, Capital\", type text}, {\"Cities, Largest[12]\", type text}, {\"Ratification oradmission[A], \", type text}, {\"Population(2020)[10], \", Int64.Type}, {\"Total area[11], mi2\", Int64.Type}, {\"Total area[11], km2\", Int64.Type}, {\"Reps., \", Int64.Type}}),",
+                "    #\"Renamed Columns\" = Table.RenameColumns(#\"Changed Type\",{{\"Flag, name andpostal abbreviation[8], \", \"State Name, Long\"}, {\"Flag, name andpostal abbreviation[8], _1\", \"State Name, Short\"}})",
+                "in",
+                "    #\"Renamed Columns\""
+              ],
+              "type": "m"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

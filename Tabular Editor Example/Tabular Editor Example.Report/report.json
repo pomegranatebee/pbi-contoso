@@ -1,0 +1,42 @@
+{
+  "config": "{\"version\":\"5.49\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU11\",\"version\":\"5.50\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY23SU11",
+            "path": "BaseThemes/CY23SU11.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"336L\"}}}}}]}}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filterbc04a8e354afa42bdc0e\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"fStateStatistics\"}},\"Property\":\"Attribute\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fStateStatistics\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Attribute\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Census population[8][a]'\"}}],[{\"Literal\":{\"Value\":\"'House seats[b]'\"}}],[{\"Literal\":{\"Value\":\"'Pop. per elec. vote, 2020[c]'\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}},{\"name\":\"Filter898ed7fe7368027d7336\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dStates\"}},\"Property\":\"State Name, Short\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dStates\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Not\":{\"Expression\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"State Name, Short\"}},\"Right\":{\"Literal\":{\"Value\":\"null\"}}}}}}}]},\"type\":\"Advanced\",\"howCreated\":1}]",
+      "height": 720.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"c1321500d35572dda13e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":56,\"y\":32,\"z\":0,\"width\":720,\"height\":648,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"dStates.State Name, Short\",\"active\":true}],\"Columns\":[{\"queryRef\":\"fWikipediaStatePopulation.Attribute\",\"active\":true}],\"Values\":[{\"queryRef\":\"fWikipediaStatePopulation.Sum of Attribute\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fStateStatistics\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dStates\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Attribute\"},\"Name\":\"fWikipediaStatePopulation.Attribute\",\"NativeReferenceName\":\"Attribute\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Sum of Attribute\"},\"Name\":\"fWikipediaStatePopulation.Sum of Attribute\",\"NativeReferenceName\":\"Sum of Attribute\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"State Name, Short\"},\"Name\":\"dStates.State Name, Short\",\"NativeReferenceName\":\"State Name, Short\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 648.00,
+          "width": 720.00,
+          "x": 56.00,
+          "y": 32.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

@@ -1074,6 +1074,11 @@
             "name": "Sum of Sales",
             "expression": "SUMX( 'fSales', 'fSales'[Unit Price] * 'fSales'[Quantity] )",
             "lineageTag": "ef5f6bf7-31c6-4721-902b-bf7619e2c9ca"
+          },
+          {
+            "name": "Sum of Sales TEST",
+            "expression": "SUMX( 'fSales', 'fSales'[Unit Price] * 'fSales'[Quantity] )",
+            "lineageTag": "8344e50c-725c-492b-b7d8-6153c3fcf479"
           }
         ],
         "annotations": [

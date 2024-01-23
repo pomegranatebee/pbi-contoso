@@ -1072,11 +1072,7 @@
         "measures": [
           {
             "name": "Sum of Sales",
-            "expression": [
-              "--SUMX( 'fSales', 'fSales'[Unit Price] * 'fSales'[Quantity] )",
-              "",
-              "\"TEST\""
-            ],
+            "expression": "SUMX( 'fSales', 'fSales'[Unit Price] * 'fSales'[Quantity] )",
             "lineageTag": "ef5f6bf7-31c6-4721-902b-bf7619e2c9ca"
           }
         ],
